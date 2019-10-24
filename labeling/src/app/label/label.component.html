@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="block">
+    <div>
+      <h1>
+        Object Detection Bounding Box Labeling
+        <button mat-icon-button color="primary"
+          (click)="openHelp()">
+          <mat-icon aria-hidden="false" aria-label="help icon">help</mat-icon>
+        </button>
+      </h1>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="canvas">
+      <canvas #canvas width="800" height="400"
+        (mousedown)="handleMouseDown($event)"
+        (mouseup)="handleMouseUp($event)"
+        (mouseleave)="handleMouseUp($event)"
+        (mousemove)="handleMouseMove($event)"></canvas>
+    </div>
+
+    <div class="block button-panel">
+      <button mat-flat-button color="accent"
+        (click)="uploadImage.click()"
+        matTooltip="select an Image">Choose Image</button>
+      <input hidden (change)="handleFile($event.target.files)" #uploadImage
+        type="file" id="file" accept="image/x-png,image/gif,image/jpeg">
+
+      <mat-radio-group aria-label="Select an option" color="primary"
+        (change)="switchMode($event)">
+        <mat-radio-button value="Add" checked
+          matTooltip="Select to Add BBox">Add</mat-radio-button>
+        <mat-radio-button value="Edit"
+          matTooltip="Select to Edit BBox">Edit</mat-radio-button>
+      </mat-radio-group>
+
+      <button mat-flat-button color="warn"
+        (click)="clearLabels()"
+        matTooltip="Clear BBox">Clear</button>
+
+      <a mat-flat-button color="primary"
+        (click)="saveLabels()"
+        matTooltip="Save the labels">Save</a>
+
+      <button mat-flat-button color="accent"
+        (click)="uploadLabel.click()"
+        matTooltip="select saved Label">Continue Label</button>
+      <input hidden (change)="loadLabels($event.target.files)" #uploadLabel
+        type="file" id="file" accept="application/json">
+    </div>
+  </div>
+</div>

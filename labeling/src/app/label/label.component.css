@@ -1,0 +1,23 @@
+.container {
+  width: 100%;
+}
+
+.block {
+  width: calc(100% - 5px);
+  max-width: 900px;
+  margin: auto;
+  display: block;
+}
+
+canvas {
+  width: 100%;
+  border: 1px solid black;
+}
+
+button {
+  margin: 10px;
+}
+
+mat-radio-button {
+  margin: 10px;
+}
